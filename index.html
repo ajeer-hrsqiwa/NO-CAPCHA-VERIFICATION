@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="main-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajeer Permit Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .font-ar { font-family: 'Noto Kufi Arabic', sans-serif; }
+        .font-en { font-family: 'Inter', sans-serif; }
+        .card-shadow { box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04); }
+        body { background-color: #f4f7fa; transition: all 0.2s ease; overflow-x: hidden; }
+        .hidden { display: none; }
+        
+        /* Help Button Overlay */
+        .help-overlay {
+            position: fixed;
+            bottom: 20px;
+            z-index: 1000;
+        }
+        .rtl-pos { left: 20px; } 
+        .ltr-pos { right: 20px; }
+        .label-text { color: #64748b !important; font-weight: 500; }
+
+        /* Title Alignment */
+        .title-ar { text-align: right; }
+        .title-en { text-align: left; font-size: 24px !important; }
+        @media (min-width: 768px) {
+            .title-en { font-size: 28px !important; }
+        }
+
+        /* Mobile Navigation Tweak */
+        @media (max-width: 640px) {
+            .mobile-nav-text { font-size: 10px !important; }
+            .mobile-header { padding-left: 8px !important; padding-right: 8px !important; }
+        }
+    </style>
+</head>
+<body class="text-[#334155] font-ar text-[12px]" id="body-tag">
+
+    <header class="bg-white py-3 px-4 md:px-12 border-b border-gray-100 sticky top-0 z-50 mobile-header">
+        <div class="max-w-6xl mx-auto flex justify-between items-center gap-2">
+            
+            <div class="flex-shrink-0">
+                <img src="logo.svg" alt="Ajeer Logo" class="h-7 md:h-11">
+            </div>
+
+            <div class="flex items-center gap-2 md:gap-7">
+                
+                <div class="flex items-center gap-2 md:gap-6 text-[#475569] font-semibold mobile-nav-text">
+                    <a href="https://qiwa.sa/en" target="_blank" class="hover:text-blue-800 transition whitespace-nowrap">
+                        <span class="lang-ar">مركز المعرفة</span>
+                        <span class="lang-en hidden font-en">Knowledge Center</span>
+                    </a>
+                    <a href="https://sso.qiwa.sa/sign-in?client_id=Nc0GAjhKyTGBM4K5VsHoNA&redirect_uri=https%3A%2F%2Fajeer.qiwa.sa%2Fauth%2Fqiwa%2Flogin&response_type=code&scope=openid+profile+phone+email&code_challenge=RY8pgybPC0oqTIW5PLLwQBvB3bKUyMg-c3t-TY_YkqE&code_challenge_method=S256" target="_blank" class="hover:text-blue-800 transition whitespace-nowrap">
+                        <span class="lang-ar">تسجيل الدخول</span>
+                        <span class="lang-en hidden font-en">Sign in</span>
+                    </a>
+                </div>
+
+                <button onclick="toggleLanguage()" class="flex items-center gap-1 hover:text-blue-800 transition">
+                    <span class="lang-ar font-en text-[12px] md:text-[14px]">EN</span>
+                    <span class="lang-en hidden font-ar text-[12px]">AR</span>
+                    <span class="text-sm opacity-70">🌐</span>
+                </button>
+
+                <a href="https://sso.qiwa.sa/en/registration?client_id=RWHh9HIw23Em0f0Moq1OoA&redirect_uri=https%3A%2F%2Fajeer-hrs.qiwa.sa%2Flogin-success-v2&response_type=code&scope=openid+email+phone+profile&code_challenge=oweXYcrVcEFRXGzGENLtySkAVh0E3Np34FTqK7k8aiU&code_challenge_method=S256" target="_blank" class="bg-[#1e3a8a] text-white px-2 py-1.5 md:px-5 md:py-2.5 rounded-md hover:bg-blue-900 transition font-bold text-[10px] md:text-[13px] whitespace-nowrap">
+                    <span class="lang-ar">سجل الآن</span>
+                    <span class="lang-en hidden font-en">Register now</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto mt-6 md:mt-12 px-4 mb-24">
+        <h1 class="text-[18px] md:text-[22px] font-bold text-[#2d3748] mb-6 md:mb-10 leading-tight">
+            <div class="lang-ar title-ar">تصريح أجير لحلول الموارد البشرية</div>
+            <div class="lang-en hidden font-en title-en">Ajeer HRS permit</div>
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div class="bg-white rounded-lg card-shadow overflow-hidden">
+                <div class="bg-[#fcfcfc] px-5 py-4 border-b border-gray-100">
+                    <h2 class="font-bold text-[13px] lang-ar">معلومات التصريح</h2>
+                    <h2 class="font-bold text-[13px] lang-en hidden font-en uppercase">Permit Information</h2>
+                </div>
+                <div class="p-5 space-y-4">
+                    <div>
+                        <p class="text-[11px] md:text-[10px] label-text mb-0.5"><span class="lang-ar">اسم العامل:</span><span class="lang-en hidden font-en">Laborer's name:</span></p>
+                        <p class="font-bold text-[#1e293b] text-[14px] md:text-[13px]">Mozibur Rahman Sagor</p>
+                    </div>
+                    <div>
+                        <p class="text-[11px] md:text-[10px] label-text mb-1.5"><span class="lang-ar">حالة التصريح:</span><span class="lang-en hidden font-en">Permit status:</span></p>
+                        <span class="bg-[#00c07f] text-white px-4 py-1.5 rounded text-[10px] font-bold inline-block">
+                            <span class="lang-ar">ساري</span><span class="lang-en hidden font-en">ACTIVE</span>
+                        </span>
+                    </div>
+                    <div>
+                        <p class="text-[11px] md:text-[10px] label-text mb-0.5"><span class="lang-ar">تاريخ بداية التصريح:</span><span class="lang-en hidden font-en">Permit start date:</span></p>
+                        <p class="font-bold text-[#1e293b] font-en">2025-09-01</p>
+                    </div>
+                    <div>
+                        <p class="text-[11px] md:text-[10px] label-text mb-0.5"><span class="lang-ar">تاريخ انتهاء التصريح:</span><span class="lang-en hidden font-en">Permit expiration date:</span></p>
+                        <p class="font-bold text-[#1e293b] font-en">2026-05-22</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg card-shadow overflow-hidden">
+                <div class="bg-[#fcfcfc] px-5 py-4 border-b border-gray-100">
+                    <h2 class="font-bold text-[13px] lang-ar">المنشأة المستفيدة</h2>
+                    <h2 class="font-bold text-[13px] lang-en hidden font-en uppercase">Beneficiary Company</h2>
+                </div>
+                <div class="p-5 space-y-4">
+                    <div>
+                        <p class="text-[11px] md:text-[10px] label-text mb-0.5"><span class="lang-ar">اسم المنشأة:</span><span class="lang-en hidden font-en">Establishment name:</span></p>
+                        <p class="font-bold text-[#1e293b] leading-relaxed text-[14px] md:text-[13px]">شركة فرع شركة السويدي اليكتريك لمشروعات نظم القوى ش.م</p>
+                    </div>
+                    <div>
+                        <p class="text-[11px] md:text-[10px] label-text mb-0.5"><span class="lang-ar">رقم المنشأة:</span><span class="lang-en hidden font-en">Establishment number:</span></p>
+                        <p class="font-bold text-[#1e293b] font-en">9-1346646</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg card-shadow overflow-hidden">
+                <div class="bg-[#fcfcfc] px-5 py-4 border-b border-gray-100">
+                    <h2 class="font-bold text-[13px] lang-ar">شركة الإستقدام</h2>
+                    <h2 class="font-bold text-[13px] lang-en hidden font-en uppercase">Istiqdam Company</h2>
+                </div>
+                <div class="p-5 space-y-4">
+                    <div>
+                        <p class="text-[11px] md:text-[10px] label-text mb-0.5"><span class="lang-ar">اسم المنشأة:</span><span class="lang-en hidden font-en">Establishment name:</span></p>
+                        <p class="font-bold text-[#1e293b] text-[14px] md:text-[13px]">شركة مهارة للموارد البشرية</p>
+                    </div>
+                    <div>
+                        <p class="text-[11px] md:text-[10px] label-text mb-0.5"><span class="lang-ar">رقم المنشأة:</span><span class="lang-en hidden font-en">Establishment number:</span></p>
+                        <p class="font-bold text-[#1e293b] font-en">1-355270</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="help-btn-container" class="help-overlay rtl-pos">
+        <button class="bg-[#1e3a8a] text-white px-5 md:px-6 py-2.5 md:py-3 rounded-full text-[12px] md:text-[13px] font-bold flex items-center gap-2 shadow-2xl hover:scale-105 transition-all">
+            <span class="lang-ar">مساعدة</span><span class="lang-en hidden font-en">Help</span>
+            <span class="bg-white text-[#1e3a8a] rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center text-[10px]">?</span>
+        </button>
+    </div>
+
+    <footer class="bg-white border-t border-gray-100 py-8 px-6 md:px-12">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-center md:text-right order-2 md:order-1">
+                <img src="logo.svg" alt="Ajeer" class="h-9 md:h-11">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-4 text-gray-400 text-[12px] md:text-[11px]">
+                    <span class="lang-ar">© ٢٠٢٦ / أجير حلول الموارد البشرية</span>
+                    <span class="lang-en hidden font-en">2026 / © Ajeer HRS</span>
+                    
+                    <div class="flex gap-4 justify-center md:justify-start">
+                        <a href="https://ajeer.qiwa.sa/landing/privacy" target="_blank" class="hover:text-blue-800 transition">
+                            <span class="lang-ar">سياسة الخصوصية</span>
+                            <span class="lang-en hidden">Privacy Policy</span>
+                        </a>
+                        <a href="https://ajeer.qiwa.sa/landing/terms" target="_blank" class="hover:text-blue-800 transition">
+                            <span class="lang-ar">الشروط والأحكام</span>
+                            <span class="lang-en hidden">Terms & Conditions</span>
+                        </a>
+                    </div>
+                </div>
+                <button onclick="toggleLanguage()" class="text-blue-800 font-bold flex items-center gap-1.5 text-[12px]">
+                    <span class="text-lg">🌐</span>
+                    <span id="footer-lang-text" class="font-en">English</span>
+                </button>
+            </div>
+            
+            <div class="flex items-center gap-6 order-1 md:order-2">
+                <img src="tk.svg" alt="Takamol" class="h-8 md:h-10">
+                <img src="hr.svg" alt="Human Resources" class="h-10 md:h-12">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'ar';
+        function toggleLanguage() {
+            const htmlTag = document.getElementById('main-html');
+            const bodyTag = document.getElementById('body-tag');
+            const helpBtn = document.getElementById('help-btn-container');
+            const arElements = document.querySelectorAll('.lang-ar');
+            const enElements = document.querySelectorAll('.lang-en');
+            const footerLangText = document.getElementById('footer-lang-text');
+
+            if (currentLang === 'ar') {
+                htmlTag.setAttribute('dir', 'ltr');
+                bodyTag.classList.remove('font-ar'); bodyTag.classList.add('font-en');
+                helpBtn.classList.remove('rtl-pos'); helpBtn.classList.add('ltr-pos');
+                arElements.forEach(el => el.classList.add('hidden'));
+                enElements.forEach(el => el.classList.remove('hidden'));
+                footerLangText.innerText = 'العربية';
+                footerLangText.classList.remove('font-en'); footerLangText.classList.add('font-ar');
+                currentLang = 'en';
+            } else {
+                htmlTag.setAttribute('dir', 'rtl');
+                bodyTag.classList.remove('font-en'); bodyTag.classList.add('font-ar');
+                helpBtn.classList.remove('ltr-pos'); helpBtn.classList.add('rtl-pos');
+                enElements.forEach(el => el.classList.add('hidden'));
+                arElements.forEach(el => el.classList.remove('hidden'));
+                footerLangText.innerText = 'English';
+                footerLangText.classList.remove('font-ar'); footerLangText.classList.add('font-en');
+                currentLang = 'ar';
+            }
+        }
+    </script>
+</body>
+</html>
